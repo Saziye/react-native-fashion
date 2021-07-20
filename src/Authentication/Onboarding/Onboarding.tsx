@@ -4,6 +4,7 @@ import {
   useValue,
   onScrollEvent,
   interpolateColor,
+  useScrollHandler,
 } from "react-native-redash/lib/module/v1";
 import Animated, { multiply } from "react-native-reanimated";
 
@@ -65,8 +66,9 @@ const slides = [
 
 const Onboarding = () => {
   const scroll = useRef<Animated.ScrollView>(null);
-  const x = useValue(0);
-  const onScroll = onScrollEvent({ x });
+  // const x = useValue(0);
+  // const onScroll = onScrollEvent({ x });
+  const { scrollHandler, x } = useScrollHandler();
   // const backgroundColor = interpolateColor(x, {
   //   inputRange: [0, width, width * 2, width * 3],
   //   outputRange: ["#BFEAF5", "#BEECC4", "#FFE4D9", "#FFDDDD"],
@@ -86,7 +88,8 @@ const Onboarding = () => {
           showsHorizontalScrollIndicator={false}
           bounces={false}
           scrollEventThrottle={1}
-          {...{ onScroll }}
+          // {...{ onScroll }}
+          {...scrollHandler}
         >
           {slides.map(({ title }, index) => (
             <Slide key={index} right={!!(index % 2)} {...{ title }} />
