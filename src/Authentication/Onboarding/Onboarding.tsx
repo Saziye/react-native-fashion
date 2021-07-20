@@ -1,13 +1,17 @@
 import React from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import Slide, { SLIDE_HEIGT } from "./Slide";
 import {
   useValue,
   onScrollEvent,
   interpolateColor,
 } from "react-native-redash/lib/module/v1";
-import Animated from "react-native-reanimated";
-const { width, height } = Dimensions.get("window");
+import Animated, { multiply } from "react-native-reanimated";
+
+import Slide, { SLIDE_HEIGT } from "./Slide";
+import Subslide from "./Subslide";
+
+const BORDER_RADIUS = 75;
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -21,13 +25,42 @@ const styles = StyleSheet.create({
   footer: {
     flex: 1,
   },
+  footerContent: {
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderTopLeftRadius: BORDER_RADIUS,
+  },
 });
 
 const slides = [
-  { label: "Relaxed", color: "#BFEAF5" },
-  { label: "Playful", color: "#BEECC4" },
-  { label: "Excentic", color: "#FFE4D9" },
-  { label: "Funky", color: "#FFDDDD" },
+  {
+    title: "Relaxed",
+    subtitle: "Find Your Outfits",
+    description:
+      "Confused about your outfits? Don't worry! Find the best outfits here!",
+    color: "#BFEAF5",
+  },
+  {
+    title: "Playful",
+    subtitle: "Hear it First, Wear it first",
+    description:
+      "Hating the clothes in your wardrobe? Explore hundreds of outfit ideas",
+    color: "#BEECC4",
+  },
+  {
+    title: "Excentic",
+    subtitle: "Your Style, Your Way",
+    description:
+      "Create your individual & unique style and look amazing everyday",
+    color: "#FFE4D9",
+  },
+  {
+    title: "Funky",
+    subtitle: "Look Good, Feel Good",
+    description:
+      "Discover the latest trends in fashion and explore your personality",
+    color: "#FFDDDD",
+  },
 ];
 
 const Onboarding = () => {
@@ -53,8 +86,8 @@ const Onboarding = () => {
           scrollEventThrottle={1}
           {...{ onScroll }}
         >
-          {slides.map(({ label }, index) => (
-            <Slide key={index} right={!!(index % 2)} {...{ label }} />
+          {slides.map(({ title }, index) => (
+            <Slide key={index} right={!!(index % 2)} {...{ title }} />
           ))}
           {/* <Slide label="Relaxed" />
           <Slide label="Playful" right />
@@ -66,9 +99,24 @@ const Onboarding = () => {
         <Animated.View
           style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
         />
-        <View
-          style={{ flex: 1, backgroundColor: "white", borderTopLeftRadius: 75 }}
-        />
+        <Animated.View
+          style={[
+            styles.footerContent,
+            {
+              width: width * slides.length,
+              flex: 1,
+              transform: [{ translateX: multiply(x, -1) }],
+            },
+          ]}
+        >
+          {slides.map(({ subtitle, description }, index) => (
+            <Subslide
+              key={index}
+              last={index === slides.length - 1}
+              {...{ subtitle, description }}
+            />
+          ))}
+        </Animated.View>
       </View>
     </View>
   );
