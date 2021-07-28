@@ -8,11 +8,10 @@ import {
 } from "react-native-redash/lib/module/v1";
 import Animated, { divide, multiply } from "react-native-reanimated";
 
-import Slide, { SLIDE_HEIGT } from "./Slide";
+import Slide, { SLIDE_HEIGT, BORDER_RADIUS } from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 
-const BORDER_RADIUS = 75;
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
@@ -48,6 +47,7 @@ const slides = [
     description:
       "Confused about your outfits? Don't worry! Find the best outfits here!",
     color: "#BFEAF5",
+    picture: require('../../../assets/images/1.png')
   },
   {
     title: "Playful",
@@ -55,6 +55,7 @@ const slides = [
     description:
       "Hating the clothes in your wardrobe? Explore hundreds of outfit ideas",
     color: "#BEECC4",
+    picture: require('../../../assets/images/2.png')
   },
   {
     title: "Excentic",
@@ -62,6 +63,7 @@ const slides = [
     description:
       "Create your individual & unique style and look amazing everyday",
     color: "#FFE4D9",
+    picture: require('../../../assets/images/3.png')
   },
   {
     title: "Funky",
@@ -69,6 +71,7 @@ const slides = [
     description:
       "Discover the latest trends in fashion and explore your personality",
     color: "#FFDDDD",
+    picture: require('../../../assets/images/4.png')
   },
 ];
 
@@ -99,8 +102,8 @@ const Onboarding = () => {
           // {...{ onScroll }}
           {...scrollHandler}
         >
-          {slides.map(({ title }, index) => (
-            <Slide key={index} right={!!(index % 2)} {...{ title }} />
+          {slides.map(({ title, picture }, index) => (
+            <Slide key={index} right={!!(index % 2)} {...{ title, picture }} />
           ))}
           {/* <Slide label="Relaxed" />
           <Slide label="Playful" right />
