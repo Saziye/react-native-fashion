@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import {Onboarding} from "./src/Authentication";
+import {Onboarding, Welcome} from "./src/Authentication";
 import { LoadAssets } from "./src/components";
 
 const fonts = {
@@ -15,6 +15,7 @@ const AuthenticationNavigator = () => {
   return (
     <AuthenticationStcak.Navigator headerMode={"none"}>
       <AuthenticationStcak.Screen name="Onboarding" component={Onboarding} />
+      <AuthenticationStcak.Screen name="Welcome" component={Welcome} />
     </AuthenticationStcak.Navigator>
   );
 };
