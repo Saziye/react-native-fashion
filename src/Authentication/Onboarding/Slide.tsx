@@ -44,7 +44,7 @@ const Slide = ({ title, right, picture }: SlideProps) => {
         <Image source={picture} style={styles.picture} />
       </View>
       <View style={[styles.titleContainer, { transform }]}>
-        <Text variant="title1">{title}</Text>
+        <Text variant="hero">{title}</Text>
       </View>
     </View>
   );

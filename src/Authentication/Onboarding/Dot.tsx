@@ -31,7 +31,7 @@ const Dot = ({ index, currentIndex }: DotProps) => {
   return (
     <Animated.View
       style={[styles.container, { opacity, transform: [{ scale }] }]}
-    ></Animated.View>
+    />
   );
 };
 

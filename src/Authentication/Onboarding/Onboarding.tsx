@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import {
-  useValue,
-  onScrollEvent,
   interpolateColor,
   useScrollHandler,
 } from "react-native-redash/lib/module/v1";
@@ -47,7 +45,7 @@ const slides = [
     description:
       "Confused about your outfits? Don't worry! Find the best outfits here!",
     color: "#BFEAF5",
-    picture: require('../../../assets/images/1.png')
+    picture: require("../../../assets/images/1.png")
   },
   {
     title: "Playful",
@@ -55,7 +53,7 @@ const slides = [
     description:
       "Hating the clothes in your wardrobe? Explore hundreds of outfit ideas",
     color: "#BEECC4",
-    picture: require('../../../assets/images/2.png')
+    picture: require("../../../assets/images/2.png"),
   },
   {
     title: "Excentic",
@@ -63,7 +61,7 @@ const slides = [
     description:
       "Create your individual & unique style and look amazing everyday",
     color: "#FFE4D9",
-    picture: require('../../../assets/images/3.png')
+    picture: require("../../../assets/images/3.png"),
   },
   {
     title: "Funky",
@@ -71,7 +69,7 @@ const slides = [
     description:
       "Discover the latest trends in fashion and explore your personality",
     color: "#FFDDDD",
-    picture: require('../../../assets/images/4.png')
+    picture: require("../../../assets/images/4.png")
   },
 ];
 
